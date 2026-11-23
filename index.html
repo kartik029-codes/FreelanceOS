@@ -65,15 +65,15 @@ main{min-width:0;padding:4px 2px 24px}.topbar{display:flex;align-items:center;ga
 <header class="topbar"><label class="search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="searchInput" placeholder="Search anything in your workspace..."><span class="kbd">⌘ K</span></label><div class="spacer"></div><button class="iconbtn" id="notifyBtn" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><i class="dot"></i></button><button class="profile" id="profileBtn"><span class="avatar">K</span><span>Kartik</span><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button></header>
 <div class="pagehead"><div><div class="eyebrow">Your workspace / Overview</div><h1>Welcome back, Kartik.</h1><p>Here's what's happening across your independent work.</p></div><div class="date" id="dateText">Today</div></div>
 <section class="kpis">
-<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Total Earnings</div><div class="kpi-value">₹1,28,400</div><span class="delta">↗ 18.6% this month</span></article>
-<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>Active Projects</div><div class="kpi-value">06</div><span class="delta">2 due this week</span></article>
-<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg></span>Pending Payments</div><div class="kpi-value">₹24,800</div><span class="delta">3 invoices outstanding</span></article>
-<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5M8 13h8M8 17h6"/></svg></span>Quotes Generated</div><div class="kpi-value">18</div><span class="delta">+50% this month</span></article>
+<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>Total Earnings</div><div class="kpi-value" data-kpi="earnings">—</div><span class="delta">Live recorded payments</span></article>
+<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span>Active Projects</div><div class="kpi-value" data-kpi="projects">—</div><span class="delta">Currently active</span></article>
+<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg></span>Pending Payments</div><div class="kpi-value" data-kpi="pending">—</div><span class="delta">Outstanding invoice balance</span></article>
+<article class="kpi glass"><div class="kpi-top"><span class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5M8 13h8M8 17h6"/></svg></span>Quotes Generated</div><div class="kpi-value" data-kpi="quotes">—</div><span class="delta">Quotes in your workspace</span></article>
 </section>
-<section class="middle"><article class="panel glass"><div class="panel-head"><div><h2>Earnings overview</h2><p class="sub">Your income over the last 6 months.</p></div><select class="select" id="periodSelect" aria-label="Chart period"><option>Last 6 Months</option><option>Last 12 Months</option><option>This Year</option></select></div><div class="chart-layout"><svg class="chart" viewBox="0 0 540 220" role="img" aria-label="Earnings trend chart"><defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g><path class="gridline" d="M42 20H520M42 62H520M42 104H520M42 146H520M42 188H520"/><text x="2" y="24">1.5L</text><text x="2" y="66">1.2L</text><text x="7" y="108">90K</text><text x="7" y="150">60K</text><text x="7" y="192">30K</text></g><path class="area" d="M42 172 C88 160 112 128 158 132 S228 150 270 116 S335 88 374 96 S435 102 478 64 S503 48 520 42 L520 188 L42 188Z"/><path class="line" d="M42 172 C88 160 112 128 158 132 S228 150 270 116 S335 88 374 96 S435 102 478 64 S503 48 520 42"/><circle class="point" cx="520" cy="42" r="5"/><g><text x="62" y="211">Jun</text><text x="153" y="211">Jul</text><text x="244" y="211">Aug</text><text x="335" y="211">Sep</text><text x="426" y="211">Oct</text><text x="506" y="211">Nov</text></g></svg><div class="summary"><div><strong>₹1,28,400</strong><span>Total earnings</span><div class="growth">↗ 18.6% from last period</div></div><hr><div><strong>₹21,400</strong><span>Average per project</span></div></div></div></article>
+<section class="middle"><article class="panel glass"><div class="panel-head"><div><h2>Earnings overview</h2><p class="sub">Your income over the last 6 months.</p></div><select class="select" id="periodSelect" aria-label="Chart period"><option>Last 6 Months</option><option>Last 12 Months</option><option>This Year</option></select></div><div class="chart-layout"><svg class="chart" viewBox="0 0 540 220" role="img" aria-label="Earnings trend chart"><defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><g><path class="gridline" d="M42 20H520M42 62H520M42 104H520M42 146H520M42 188H520"/><text x="2" y="24">1.5L</text><text x="2" y="66">1.2L</text><text x="7" y="108">90K</text><text x="7" y="150">60K</text><text x="7" y="192">30K</text></g><path class="area" d="M42 172 C88 160 112 128 158 132 S228 150 270 116 S335 88 374 96 S435 102 478 64 S503 48 520 42 L520 188 L42 188Z"/><path class="line" d="M42 172 C88 160 112 128 158 132 S228 150 270 116 S335 88 374 96 S435 102 478 64 S503 48 520 42"/><circle class="point" cx="520" cy="42" r="5"/><g><text x="62" y="211">Jun</text><text x="153" y="211">Jul</text><text x="244" y="211">Aug</text><text x="335" y="211">Sep</text><text x="426" y="211">Oct</text><text x="506" y="211">Nov</text></g></svg><div class="summary"><div><strong data-kpi="earnings-summary">—</strong><span>Total recorded payments</span><div class="growth">Calculated from your payment records</div></div><hr><div><strong data-kpi="average">—</strong><span>Average project budget</span></div></div></div></article>
 <article class="panel glass"><div class="panel-head"><div><h2>Quick actions</h2><p class="sub">Pick up where you left off.</p></div></div><div class="quick"><button class="action" data-action="Pricing Studio"><span class="action-icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2m4 0h2m-8 4h2m4 0h2"/></svg></span>Calculate a project price<span class="arrow">↗</span></button><button class="action" data-action="Quote Builder"><span class="action-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M14 3v5h5M8 13h8M8 17h6"/></svg></span>Create a new quote<span class="arrow">↗</span></button><button class="action" data-action="Opportunities"><span class="action-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>Browse opportunities<span class="arrow">↗</span></button></div></article></section>
-<section class="bottom"><article class="panel glass"><div class="panel-head"><div><h2>Recent quotes</h2><p class="sub">Your latest client quotations.</p></div><button class="viewall" id="viewAll">View all ↗</button></div><div class="table-wrap"><table id="quoteTable"><thead><tr><th>Client</th><th>Project</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody><tr><td>Nova Studio</td><td class="secondary">Website Redesign</td><td>₹42,000</td><td><span class="status">Sent</span></td><td><button class="more" aria-label="More options">···</button></td></tr><tr><td>Lumen Co.</td><td class="secondary">Brand Identity</td><td>₹28,000</td><td><span class="status accepted">Accepted</span></td><td><button class="more" aria-label="More options">···</button></td></tr><tr><td>Peak Digital</td><td class="secondary">UI Design System</td><td>₹36,000</td><td><span class="status draft">Draft</span></td><td><button class="more" aria-label="More options">···</button></td></tr></tbody></table></div></article>
-<article class="panel glass"><div class="panel-head"><div><h2>This week</h2><p class="sub">Your latest updates and activity.</p></div></div><div class="activity-list" id="activityList"><div class="activity-item"><span class="activity-icon"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span><div class="activity-copy"><b>Quote accepted</b> by Lumen Co.</div><span class="activity-time">2h ago</span></div><div class="activity-item"><span class="activity-icon"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM14 3v5h5"/></svg></span><div class="activity-copy">New quote created for <b>Nova Studio</b>.</div><span class="activity-time">4h ago</span></div><div class="activity-item"><span class="activity-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></span><div class="activity-copy">Saved an opportunity: <b>Product Designer</b> at Atlas Labs.</div><span class="activity-time">6h ago</span></div></div></article></section>
+<section class="bottom"><article class="panel glass"><div class="panel-head"><div><h2>Recent quotes</h2><p class="sub">Your latest client quotations.</p></div><button class="viewall" id="viewAll">View all ↗</button></div><div class="table-wrap"><table id="quoteTable"><thead><tr><th>Client</th><th>Project</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody id="liveQuoteRows"><tr><td colspan="5" class="secondary">Loading your quotes…</td></tr></tbody></table></div></article>
+<article class="panel glass"><div class="panel-head"><div><h2>This week</h2><p class="sub">Your latest updates and activity.</p></div></div><div class="activity-list" id="activityList"><div class="activity-item"><div class="activity-copy">Loading your workspace activity…</div></div></div></article></section>
 </main></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 const toastEl=document.getElementById('toast');let toastTimer;
@@ -163,6 +163,56 @@ async function ensureWorkspace(user) {
   if (createError) throw createError;
   return created;
 }
+async function loadDashboard(workspace) {
+  const wid = workspace.id;
+  const [paymentsRes, invoicesRes, projectsRes, quotesRes, settingsRes] = await Promise.all([
+    supabase.from('payments').select('amount,currency_code,payment_date').eq('workspace_id',wid),
+    supabase.from('invoices').select('total,amount_paid,currency_code,status').eq('workspace_id',wid),
+    supabase.from('projects').select('id,name,status,budget,currency_code').eq('workspace_id',wid),
+    supabase.from('quotes').select('id,quote_number,title,status,total,currency_code,created_at,clients(name)').eq('workspace_id',wid).order('created_at',{ascending:false}).limit(5),
+    supabase.from('workspace_settings').select('business_name,country_code,currency_code').eq('workspace_id',wid).maybeSingle()
+  ]);
+  for (const result of [paymentsRes,invoicesRes,projectsRes,quotesRes,settingsRes]) if (result.error) throw result.error;
+  const payments = paymentsRes.data || [], invoices = invoicesRes.data || [], projects = projectsRes.data || [], quotes = quotesRes.data || [];
+  const paidByCurrency = {};
+  payments.forEach(p => { const code=(p.currency_code||workspace.currency_code||'INR').trim(); paidByCurrency[code]=(paidByCurrency[code]||0)+Number(p.amount||0); });
+  const currency = (settingsRes.data?.currency_code || workspace.currency_code || 'INR').trim();
+  const fmt = (amount, code=currency) => {
+    try { return new Intl.NumberFormat(undefined,{style:'currency',currency:code,maximumFractionDigits:0}).format(amount); }
+    catch { return code+' '+Math.round(amount).toLocaleString(); }
+  };
+  const earnings = paidByCurrency[currency] || 0;
+  const pending = invoices.reduce((sum,i)=>sum+Math.max(0,Number(i.total||0)-Number(i.amount_paid||0)),0);
+  const active = projects.filter(p=>p.status==='active').length;
+  const average = projects.length ? projects.reduce((sum,p)=>sum+Number(p.budget||0),0)/projects.length : 0;
+  document.querySelector('[data-kpi="earnings"]').textContent=fmt(earnings);
+  document.querySelector('[data-kpi="earnings-summary"]').textContent=fmt(earnings);
+  document.querySelector('[data-kpi="projects"]').textContent=String(active).padStart(2,'0');
+  document.querySelector('[data-kpi="pending"]').textContent=fmt(pending);
+  document.querySelector('[data-kpi="quotes"]').textContent=String(quotes.length);
+  document.querySelector('[data-kpi="average"]').textContent=fmt(average);
+  const quoteBody=document.getElementById('liveQuoteRows'); quoteBody.replaceChildren();
+  if (!quotes.length) {
+    const row=document.createElement('tr'), cell=document.createElement('td'); cell.colSpan=5; cell.className='secondary'; cell.textContent='No quotes yet. Your quotations will appear here.'; row.append(cell); quoteBody.append(row);
+  } else quotes.forEach(q=>{
+    const row=document.createElement('tr');
+    const client=document.createElement('td'); client.textContent=q.clients?.name||'No client linked';
+    const title=document.createElement('td'); title.className='secondary'; title.textContent=q.title||q.quote_number;
+    const amount=document.createElement('td'); amount.textContent=fmt(Number(q.total||0),(q.currency_code||currency).trim());
+    const status=document.createElement('td'); const badge=document.createElement('span'); badge.className='status '+(q.status==='accepted'?'accepted':q.status==='draft'?'draft':''); badge.textContent=q.status.replace('_',' '); status.append(badge);
+    const more=document.createElement('td'); more.textContent=''; row.append(client,title,amount,status,more); quoteBody.append(row);
+  });
+  const activity=document.getElementById('activityList'); activity.replaceChildren();
+  const events=[
+    ...quotes.slice(0,3).map(q=>({date:q.created_at,text:'Quote created: '+(q.title||q.quote_number)})),
+    ...payments.slice().sort((a,b)=>new Date(b.payment_date)-new Date(a.payment_date)).slice(0,3).map(p=>({date:p.payment_date,text:'Payment recorded: '+fmt(Number(p.amount||0),(p.currency_code||currency).trim())})),
+    ...projects.slice(0,3).map(p=>({date:null,text:'Project: '+p.name+' ('+p.status.replace('_',' ')+')'}))
+  ].sort((a,b)=>new Date(b.date||0)-new Date(a.date||0)).slice(0,5);
+  if (!events.length) { const empty=document.createElement('div'); empty.className='activity-item'; empty.textContent='Your activity will appear here as you use FreelanceOS.'; activity.append(empty); }
+  else events.forEach(e=>{const item=document.createElement('div');item.className='activity-item';const copy=document.createElement('div');copy.className='activity-copy';copy.textContent=e.text;const time=document.createElement('span');time.className='activity-time';time.textContent=e.date?new Date(e.date).toLocaleDateString():'Recent';item.append(copy,time);activity.append(item);});
+  const heading=document.querySelector('.pagehead p');
+  if (heading) heading.textContent=(settingsRes.data?.business_name||workspace.name)+' · Your live workspace overview.';
+}
 async function boot(session) {
   if (!session?.user) { showAuth(); return; }
   showApp(session.user);
@@ -176,9 +226,10 @@ async function boot(session) {
       document.querySelector('.pagehead h1').textContent = 'Welcome back, ' + first + '.';
       document.querySelector('#profileBtn span:nth-child(2)').textContent = profile.display_name;
     }
+    await loadDashboard(workspace);
   } catch (error) {
     console.error('Workspace initialisation failed:', error);
-    toast('Signed in, but workspace loading failed. Check database policies.');
+    toast('Dashboard data could not load: '+(error.message||'Check database access.'));
   }
 }
 authForm.addEventListener('submit', async (event) => {
