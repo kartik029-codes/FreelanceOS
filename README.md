@@ -69,3 +69,18 @@ The project URL and Supabase publishable key belong in frontend configuration on
 - Currency and country are stored per workspace and per financial record where applicable.
 - Tax settings and document content are stored as structured JSON snapshots so issued documents can retain the settings and editable draft structure used when they were created.
 - Local-only mode is a separate storage mode; it must not silently upload local records to the cloud.
+
+## Authentication milestone
+
+The frontend now uses Supabase Auth for email/password sign-up, sign-in, password-reset email requests, persistent sessions, and sign-out. After authentication it loads the user's workspace and stores the active workspace ID locally for the next application modules.
+
+### Supabase Auth configuration
+
+In **Authentication → URL Configuration** set:
+
+- **Site URL:** `https://kartik029-codes.github.io/FreelanceOS/`
+- **Redirect URLs:** add `https://kartik029-codes.github.io/FreelanceOS/**`
+
+If email confirmation is enabled, new users must verify their email before signing in. Configure the email templates and SMTP settings in Supabase before public launch; the default email service may be rate-limited.
+
+The browser application uses only the Supabase project URL and publishable key. Never expose a secret or service-role key in frontend code.
