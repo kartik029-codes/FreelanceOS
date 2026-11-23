@@ -43,3 +43,29 @@ The repository includes a GitHub Actions workflow for GitHub Pages. In the repos
 ## License
 
 No license has been added yet. All rights remain with the repository owner unless a license is added.
+
+
+## Backend foundation (Supabase)
+
+The first database migration is available at `supabase/migrations/0001_initial_schema.sql`.
+
+### Apply the schema
+
+1. Open your Supabase project.
+2. Go to **SQL Editor** and create a new query.
+3. Copy the complete contents of `supabase/migrations/0001_initial_schema.sql` from this repository.
+4. Run the query.
+5. Check **Table Editor** for the new tables.
+
+The migration establishes profiles, workspaces and memberships, clients, projects, opportunities, quotes and quote items, invoices and invoice items, expenses, payments, and workspace settings. Row Level Security is enabled for the business tables, with workspace-scoped access policies.
+
+### Client configuration
+
+The project URL and Supabase publishable key belong in frontend configuration only. Never put a service-role key, secret API key, or database password in browser code or Git. Keep local secrets out of commits. The frontend integration will be added in a later implementation step.
+
+### Product architecture notes
+
+- INR and India are the initial workspace defaults.
+- Currency and country are stored per workspace and per financial record where applicable.
+- Tax settings and document content are stored as structured JSON snapshots so issued documents can retain the settings and editable draft structure used when they were created.
+- Local-only mode is a separate storage mode; it must not silently upload local records to the cloud.
