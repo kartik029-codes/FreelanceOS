@@ -25,9 +25,31 @@ main{min-width:0;padding:4px 2px 24px}.topbar{display:flex;align-items:center;ga
 @media(max-width:1120px){.app{grid-template-columns:220px minmax(0,1fr)}.kpis{grid-template-columns:repeat(2,1fr)}.chart-layout{grid-template-columns:1fr}.summary{display:flex;gap:30px;border-left:0;border-top:1px solid #ffffff22;padding:15px 0 0}.summary hr{display:none}}
 @media(max-width:820px){.app{grid-template-columns:1fr;padding:12px}.sidebar{min-height:0;padding:13px;border-radius:18px}.brand{padding:5px 8px 13px}.navgroup{display:flex;gap:5px;overflow:auto;margin:0}.label{display:none}.navitem{width:auto;white-space:nowrap;padding:9px 11px}.navitem svg{width:16px}.pro{display:none}.middle,.bottom{grid-template-columns:1fr}.topbar{margin:10px 2px 22px}.pagehead{align-items:flex-start;flex-direction:column}.date{display:none}}
 @media(max-width:520px){.kpis{grid-template-columns:1fr 1fr;gap:9px}.kpi{padding:14px;min-height:115px}.kpi-value{font-size:23px}.panel{padding:16px}.profile span,.profile svg{display:none}.kbd{display:none}.search{min-width:0}.chart{height:170px}.summary{gap:18px}.summary strong{font-size:18px}}
+
+[hidden]{display:none!important}
+.auth-screen{min-height:100vh;display:grid;place-items:center;padding:28px 16px;position:relative;z-index:2}
+.auth-card{width:min(100%,440px);padding:34px;border-radius:26px}
+.auth-brand{padding:0 0 30px}
+.auth-card h1{font:600 34px var(--display);letter-spacing:-1.3px;margin:10px 0 7px}
+.auth-intro{color:#aaaab0;font-size:13px;line-height:1.6;margin:0 0 25px}
+.auth-label{display:block;color:#d8d8da;font-size:11px;font-weight:600;margin:0 0 15px}
+.auth-label input{display:block;width:100%;height:47px;margin-top:8px;padding:0 13px;border:1px solid #ffffff20;border-radius:12px;background:#ffffff0b;color:#fff;outline:none;font:13px var(--font)}
+.auth-label input:focus{border-color:#ffffff70;box-shadow:0 0 0 3px #ffffff0c}
+.auth-submit{width:100%;height:48px;margin-top:7px;border:0;border-radius:12px;background:#f2f2f2;color:#111;font-weight:700;font-size:13px;cursor:pointer}
+.auth-submit:disabled{opacity:.55;cursor:wait}
+.auth-link,.auth-switch button{border:0;background:none;color:#eee;text-decoration:underline;text-underline-offset:3px;font:inherit;cursor:pointer}
+.auth-link{display:block;margin:17px auto 20px;font-size:11px;color:#bdbdc1}
+.auth-divider{display:flex;align-items:center;gap:12px;color:#777;font-size:9px;letter-spacing:1.5px}
+.auth-divider:before,.auth-divider:after{content:"";height:1px;background:#ffffff18;flex:1}
+.auth-switch{text-align:center;color:#aaa;font-size:11px;margin:20px 0 0}
+.auth-switch button{font-size:11px}
+.auth-message{min-height:18px;margin:14px 0 0;color:#e8e8e8;font-size:11px;line-height:1.5;text-align:center}
+.auth-message.error{color:#ffb6b6}
+.auth-legal{font-size:9px;line-height:1.6;color:#777;text-align:center;margin:18px 0 0}
+@media(max-width:520px){.auth-card{padding:25px 21px}}
 </style></head>
 <body><div class="rock one"></div><div class="rock two"></div>
-<div class="app">
+<section class="auth-screen" id="authScreen" hidden><div class="auth-card glass"><div class="brand auth-brand"><span class="mark"></span>FreelanceOS</div><div class="eyebrow" id="authEyebrow">YOUR INDEPENDENT WORKSPACE</div><h1 id="authTitle">Welcome back.</h1><p class="auth-intro" id="authIntro">Sign in to continue to your workspace.</p><form id="authForm"><label class="auth-label">Email address<input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" required></label><label class="auth-label" id="passwordField">Password<input id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters" required></label><label class="auth-label" id="nameField" hidden>Your name<input id="authName" type="text" autocomplete="name" placeholder="Your name"></label><button class="auth-submit" id="authSubmit" type="submit">Sign in</button></form><button class="auth-link" id="forgotBtn" type="button">Forgot password?</button><div class="auth-divider"><span>OR</span></div><p class="auth-switch" id="authSwitch">New to FreelanceOS? <button type="button" id="switchAuth">Create an account</button></p><p class="auth-message" id="authMessage" role="status" aria-live="polite"></p><p class="auth-legal">By continuing, you agree to use FreelanceOS responsibly. Your workspace data is private to your account.</p></div></section><div class="app" id="appRoot" hidden>
 <aside class="sidebar glass" id="sidebar">
 <div class="brand"><span class="mark"></span>FreelanceOS</div>
 <div class="navgroup"><div class="label">Workspace</div>
@@ -66,4 +88,142 @@ document.getElementById('periodSelect').addEventListener('change',e=>toast('Char
 document.getElementById('searchInput').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();document.querySelectorAll('#quoteTable tbody tr,.activity-item').forEach(row=>row.style.display=row.textContent.toLowerCase().includes(q)?'':'none')});
 document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();document.getElementById('searchInput').focus()}if(e.key==='Escape')document.getElementById('searchInput').blur()});
 document.getElementById('dateText').textContent=new Intl.DateTimeFormat('en-IN',{weekday:'short',day:'2-digit',month:'short',year:'numeric'}).format(new Date());
+</script>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+const SUPABASE_URL = 'https://tcqobrptrymxvnkyspdk.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_DZXAZSC2Bmz3fBa706afCg_eQ1CLH_k';
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+});
+const authScreen = document.getElementById('authScreen');
+const appRoot = document.getElementById('appRoot');
+const authForm = document.getElementById('authForm');
+const authEmail = document.getElementById('authEmail');
+const authPassword = document.getElementById('authPassword');
+const authName = document.getElementById('authName');
+const authTitle = document.getElementById('authTitle');
+const authIntro = document.getElementById('authIntro');
+const authSubmit = document.getElementById('authSubmit');
+const authMessage = document.getElementById('authMessage');
+const passwordField = document.getElementById('passwordField');
+const nameField = document.getElementById('nameField');
+const forgotBtn = document.getElementById('forgotBtn');
+const switchAuth = document.getElementById('switchAuth');
+const authSwitch = document.getElementById('authSwitch');
+let authMode = 'signin';
+let busy = false;
+
+function message(text, isError=false) {
+  authMessage.textContent = text;
+  authMessage.classList.toggle('error', isError);
+}
+function setMode(mode) {
+  authMode = mode;
+  const signup = mode === 'signup';
+  const reset = mode === 'reset';
+  document.getElementById('authEyebrow').textContent = reset ? 'ACCOUNT RECOVERY' : 'YOUR INDEPENDENT WORKSPACE';
+  authTitle.textContent = reset ? 'Reset password.' : signup ? 'Create your workspace.' : 'Welcome back.';
+  authIntro.textContent = reset ? 'We will email you a secure password reset link.' : signup ? 'Create an account to organise your independent work.' : 'Sign in to continue to your workspace.';
+  authSubmit.textContent = reset ? 'Send reset link' : signup ? 'Create account' : 'Sign in';
+  passwordField.hidden = reset;
+  authPassword.required = !reset;
+  nameField.hidden = !signup;
+  authName.required = signup;
+  forgotBtn.hidden = signup || reset;
+  document.querySelector('.auth-divider').hidden = reset;
+  authSwitch.hidden = reset;
+  authSwitch.innerHTML = signup ? 'Already have an account? <button type="button" id="switchAuth">Sign in</button>' : 'New to FreelanceOS? <button type="button" id="switchAuth">Create an account</button>';
+  document.getElementById('switchAuth').addEventListener('click', () => setMode(signup ? 'signin' : 'signup'));
+  message('');
+}
+function showApp(user) {
+  authScreen.hidden = true;
+  appRoot.hidden = false;
+  const label = user.user_metadata?.full_name || user.email?.split('@')[0] || 'Freelancer';
+  const first = label.trim().split(/\s+/)[0];
+  const profileName = document.querySelector('#profileBtn span:nth-child(2)');
+  if (profileName) profileName.textContent = label;
+  const heading = document.querySelector('.pagehead h1');
+  if (heading) heading.textContent = 'Welcome back, ' + first + '.';
+  const avatar = document.querySelector('.avatar');
+  if (avatar) avatar.textContent = first.charAt(0).toUpperCase();
+}
+function showAuth() {
+  appRoot.hidden = true;
+  authScreen.hidden = false;
+  setMode('signin');
+}
+async function ensureWorkspace(user) {
+  const { data, error } = await supabase.from('workspaces').select('id,name,country_code,currency_code').order('created_at',{ascending:true}).limit(1);
+  if (error) throw error;
+  if (data?.length) return data[0];
+  const name = (user.user_metadata?.full_name || user.email?.split('@')[0] || 'My') + "'s Workspace";
+  const { data: created, error: createError } = await supabase.from('workspaces').insert({name,owner_id:user.id}).select('id,name,country_code,currency_code').single();
+  if (createError) throw createError;
+  return created;
+}
+async function boot(session) {
+  if (!session?.user) { showAuth(); return; }
+  showApp(session.user);
+  try {
+    const workspace = await ensureWorkspace(session.user);
+    localStorage.setItem('freelanceos.activeWorkspace', workspace.id);
+    localStorage.setItem('freelanceos.workspaceName', workspace.name);
+    const { data: profile } = await supabase.from('profiles').select('display_name').eq('id',session.user.id).maybeSingle();
+    if (profile?.display_name) {
+      const first = profile.display_name.trim().split(/\s+/)[0];
+      document.querySelector('.pagehead h1').textContent = 'Welcome back, ' + first + '.';
+      document.querySelector('#profileBtn span:nth-child(2)').textContent = profile.display_name;
+    }
+  } catch (error) {
+    console.error('Workspace initialisation failed:', error);
+    toast('Signed in, but workspace loading failed. Check database policies.');
+  }
+}
+authForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (busy) return;
+  busy = true; authSubmit.disabled = true; message('');
+  try {
+    const email = authEmail.value.trim();
+    if (authMode === 'signup') {
+      const { data, error } = await supabase.auth.signUp({
+        email, password: authPassword.value,
+        options: { data: { full_name: authName.value.trim() } }
+      });
+      if (error) throw error;
+      if (data.session) await boot(data.session);
+      else message('Account created. Check your inbox to verify your email, then sign in.');
+    } else if (authMode === 'reset') {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + window.location.pathname
+      });
+      if (error) throw error;
+      message('If an account exists for this email, a password reset link has been sent.');
+    } else {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password: authPassword.value });
+      if (error) throw error;
+      await boot(data.session);
+    }
+  } catch (error) {
+    message(error.message || 'Something went wrong. Please try again.', true);
+  } finally {
+    busy = false; authSubmit.disabled = false;
+  }
+});
+forgotBtn.addEventListener('click', () => setMode('reset'));
+switchAuth.addEventListener('click', () => setMode(authMode === 'signup' ? 'signin' : 'signup'));
+document.getElementById('profileBtn').addEventListener('click', async () => {
+  const { error } = await supabase.auth.signOut();
+  if (error) toast(error.message); else showAuth();
+});
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'PASSWORD_RECOVERY') {
+    showAuth(); setMode('reset'); message('Choose a new password after opening your recovery link.');
+  } else if (event === 'SIGNED_OUT') showAuth();
+});
+const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+if (sessionError) { showAuth(); message(sessionError.message, true); }
+else await boot(session);
 </script></body></html>
