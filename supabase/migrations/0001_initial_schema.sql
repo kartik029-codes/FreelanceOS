@@ -288,8 +288,8 @@ do $$
 declare t text;
 begin
   foreach t in array array['clients','projects','opportunities','quotes','invoices','expenses','payments','workspace_settings'] loop
-    execute format('drop policy if exists "workspace members manage %I" on public.%I',t,t);
-    execute format('create policy "workspace members manage %I" on public.%I for all to authenticated using (public.is_workspace_member(workspace_id)) with check (public.is_workspace_member(workspace_id))',t,t);
+    execute format('drop policy if exists %I on public.%I', 'workspace members manage ' || t, t);
+    execute format('create policy %I on public.%I for all to authenticated using (public.is_workspace_member(workspace_id)) with check (public.is_workspace_member(workspace_id))', 'workspace members manage ' || t, t);
   end loop;
 end $$;
 
