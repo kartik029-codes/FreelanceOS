@@ -169,7 +169,7 @@ async function loadDashboard(workspace) {
     supabase.from('payments').select('amount,currency_code,payment_date').eq('workspace_id',wid),
     supabase.from('invoices').select('total,amount_paid,currency_code,status').eq('workspace_id',wid),
     supabase.from('projects').select('id,name,status,budget,currency_code').eq('workspace_id',wid),
-    supabase.from('quotes').select('id,quote_number,title,status,total,currency_code,created_at,clients(name)').eq('workspace_id',wid).order('created_at',{ascending:false}).limit(5),
+    supabase.from('quotes').select('id,quote_number,title,status,total,currency_code,created_at,clients(name)',{count:'exact'}).eq('workspace_id',wid).order('created_at',{ascending:false}).limit(5),
     supabase.from('workspace_settings').select('business_name,country_code,currency_code').eq('workspace_id',wid).maybeSingle()
   ]);
   for (const result of [paymentsRes,invoicesRes,projectsRes,quotesRes,settingsRes]) if (result.error) throw result.error;
@@ -182,14 +182,14 @@ async function loadDashboard(workspace) {
     catch { return code+' '+Math.round(amount).toLocaleString(); }
   };
   const earnings = paidByCurrency[currency] || 0;
-  const pending = invoices.reduce((sum,i)=>sum+Math.max(0,Number(i.total||0)-Number(i.amount_paid||0)),0);
+  const pending = invoices.filter(i=>(i.currency_code||currency).trim()===currency).reduce((sum,i)=>sum+Math.max(0,Number(i.total||0)-Number(i.amount_paid||0)),0);
   const active = projects.filter(p=>p.status==='active').length;
   const average = projects.length ? projects.reduce((sum,p)=>sum+Number(p.budget||0),0)/projects.length : 0;
   document.querySelector('[data-kpi="earnings"]').textContent=fmt(earnings);
   document.querySelector('[data-kpi="earnings-summary"]').textContent=fmt(earnings);
   document.querySelector('[data-kpi="projects"]').textContent=String(active).padStart(2,'0');
   document.querySelector('[data-kpi="pending"]').textContent=fmt(pending);
-  document.querySelector('[data-kpi="quotes"]').textContent=String(quotes.length);
+  document.querySelector('[data-kpi="quotes"]').textContent=String(quotesRes.count ?? quotes.length);
   document.querySelector('[data-kpi="average"]').textContent=fmt(average);
   const quoteBody=document.getElementById('liveQuoteRows'); quoteBody.replaceChildren();
   if (!quotes.length) {
